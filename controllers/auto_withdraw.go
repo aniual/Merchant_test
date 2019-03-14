@@ -7,7 +7,7 @@ import (
 )
 
 
-type AutoWithdraw struct {
+type Withdraw struct {
 	result int
 	reason string
 	Serialnum string
@@ -15,19 +15,19 @@ type AutoWithdraw struct {
 }
 
 
-type DrawController struct {
+type AutoWithdraw struct {
 	beego.Controller
 }
 
 
-func (c *DrawController) Post() {
+func (c *AutoWithdraw) Post() {
 	c.Data["json"] = map[string]string{"result":"","reason":"","Serialnum":"","Transcationid":auto_draw()}
 	c.ServeJSON()
 }
 
 
 func auto_draw() string{
-	trans := &AutoWithdraw{TransCationid:"0001"}
+	trans := &Withdraw{TransCationid:"0001"}
 	json_auto,_ :=json.Marshal(trans)
 	json_encode,_ := Encrypt(json_auto)
 	return json_encode

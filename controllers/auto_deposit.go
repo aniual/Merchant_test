@@ -31,7 +31,9 @@ func (c *AutoController) Post() {
 	json.Unmarshal(data, &num)
 	c.ServeJSON()*/
 	var data map[string]interface{}
+	//获取到的json二进制数据
 	fmt.Println(c.Ctx.Input.RequestBody)
+	//解析二进制json
 	json.Unmarshal(c.Ctx.Input.RequestBody, &data)
 	fmt.Println(data["MiniAmount"])
 	c.ServeJSON()
