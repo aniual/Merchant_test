@@ -4,6 +4,7 @@ import (
 	_"Merchants_test/models"
 	"github.com/astaxie/beego"
 	"encoding/json"
+	"Merchants_test/models"
 	"fmt"
 )
 
@@ -25,40 +26,21 @@ type AutoController struct {
 
 
 func (c *AutoController) Post() {
-	/*var num models.AutoWithdraw
+	var num models.AutoDeposit
 	data := c.Ctx.Input.RequestBody
-	fmt.Println(data)
-	json.Unmarshal(data, &num)
-	c.ServeJSON()*/
-	var data map[string]interface{}
-	//获取到的json二进制数据
-	fmt.Println(c.Ctx.Input.RequestBody)
-	//解析二进制json
-	json.Unmarshal(c.Ctx.Input.RequestBody, &data)
-	fmt.Println(data["MiniAmount"])
-	c.ServeJSON()
-}
-
-
-
-func auto_response() string{
-	auto := &AutoDepositDataunit{100,"00a1",""}
+	err := json.Unmarshal(data, &num)
+	fmt.Println("Serialnum:",num.Serialnum)
+	auto := &AutoDepositDataunit{1000000,"001",num.Serialnum}
+	//Datajson进行加密
 	json_auto,_ :=json.Marshal(auto)
 	json_encode,_ := Encrypt(json_auto)
-	return json_encode
+	if err == nil {
+		c.Data["json"] = map[string]interface{}{"result":0,"reason":"","Data":json_encode}
+	}else {
+		c.Data["json"] = map[string]interface{}{"result":1,"reason":"","Data":err.Error()}
+	}
+	c.ServeJSON()
 }
 
 
 
-
-/*func (c *AutoController) Delete(){
-	idStr := c.Ctx.Input.Param(":id")
-	fmt.Println(idStr)
-	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteApp(id); err == nil {
-		c.Data["json"] = "OK"
-	} else {
-		c.Data["json"] = err.Error()
-	}
-	c.ServeJSON()
-}*/

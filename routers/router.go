@@ -9,19 +9,16 @@ func init() {
     beego.Router("/", &controllers.MainController{})
     beego.Router("/login",&controllers.LoginController{},"get:Get;post:Post")
 	beego.Router("/register",&controllers.RegisterController{},"get:Get;post:Post")
-	beego.Router("/gamelist",&controllers.GameListController{},"get:Get")
-	ns :=
-		beego.NewNamespace("/",
+	beego.Router("/gamelist",&controllers.GameListController{})
+	/*ns := beego.NewNamespace("/",
 			beego.NSNamespace("/autodeposit",
-				beego.NSInclude(
-					&controllers.AutoController{},
-				),
+				beego.NSRouter("/",&controllers.AutoController{}),
 			),
 			beego.NSNamespace("/autowithdraw",
-				beego.NSInclude(
-					&controllers.AutoWithdraw{},
-				),
+				beego.NSRouter("/",&controllers.AutoWithdraw{}),
 			),
 		)
-	beego.AddNamespace(ns)
+	beego.AddNamespace(ns)*/
+	beego.Router("/autodeposit",&controllers.AutoController{})
+	beego.Router("/autowithdraw",&controllers.WithController{})
 }

@@ -80,7 +80,7 @@ func Get(game_url string) string{
 	params.Set("CoUserName", "a")
 	params.Set("nickname", "a")
 	params.Set("AccessToken", list.AccessToken)
-	params.Set("terminaltype", "Mac OS")
+	params.Set("terminaltype", "MacOS")
 	params.Set("GameUserID", ID)
 	params.Set("merchantid", "XBW001")
 	params.Set("model", "2")
