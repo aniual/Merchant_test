@@ -10,15 +10,17 @@ func init() {
     beego.Router("/login",&controllers.LoginController{},"get:Get;post:Post")
 	beego.Router("/register",&controllers.RegisterController{},"get:Get;post:Post")
 	beego.Router("/gamelist",&controllers.GameListController{})
-	/*ns := beego.NewNamespace("/",
+	ns := beego.NewNamespace("/",
 			beego.NSNamespace("/autodeposit",
-				beego.NSRouter("/",&controllers.AutoController{}),
+				beego.NSInclude(
+					&controllers.AutoController{},
+					),
 			),
 			beego.NSNamespace("/autowithdraw",
-				beego.NSRouter("/",&controllers.AutoWithdraw{}),
+				beego.NSInclude(
+					&controllers.WithController{},
+				),
 			),
 		)
-	beego.AddNamespace(ns)*/
-	beego.Router("/autodeposit",&controllers.AutoController{})
-	beego.Router("/autowithdraw",&controllers.WithController{})
+	beego.AddNamespace(ns)
 }

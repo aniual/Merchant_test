@@ -8,7 +8,6 @@ import (
 	_"fmt"
 	"io/ioutil"
 
-	_"fmt"
 )
 
 //获取gamelist的游戏列表
@@ -59,10 +58,11 @@ func GameList()string{
 		MerchantId:"XBW001"}
 	//请求api中的Data的提取
 	Data := Pubilc("gamelist",res)
+	//fmt.Println(string(Data))
 	return Data
 }
 
-//用于请求的公共代码，直接调用此方法
+/*//用于请求的公共代码，直接调用此方法
 func Pubilc_(key  string, res *CreatePlay) string{
 	s :=&Server{}
 	key_body, _ := json.Marshal(res)
@@ -87,7 +87,7 @@ func CreatePlayer() string{
 		//请求api中的Data的提取
 	Data := Pubilc_("createplayer",res)
 	return Data
-}
+}*/
 
 
 //用户访问游戏平台获取AccessToken
@@ -99,4 +99,3 @@ func GetAccessToken() string{
 	Data := Pubilc_("getaccesstoken",res)
 	return Data
 }
-

@@ -7,6 +7,7 @@ import (
 	"net/url"
 	"strings"
 	"strconv"
+	"fmt"
 )
 
 
@@ -32,37 +33,29 @@ type coCreaterPlay struct {
 
 }
 
+
 //get请求游戏列表数据
 func (c *GameListController)  Get() {
-	//var gamename= make([]GameListDataUnit,0)
-	//初始化gamename数组
-	var gamename = make([]string,0)
-	// 返回解码后的gamelist的data值
-	s, _ := Decrypt(GameList())
-	//fmt.Println("00000000000000",s)
-	list := &GameListData{}
-	//fmt.Println(list)
-	//对gamelist的datajson进行解码
-	if err := json.Unmarshal([]byte(s), &list); err != nil {
-		panic(err)
-	}
-	var Url string
-	for _, v := range list.GameListDataArray {
-		gamename = append(gamename,v.GameName)
-		gamename = append(gamename,Get(v.Url))
-		//fmt.Println(v.Url)
-	}
-	//fmt.Println(gamename)
-	c.Data["gamename"] = gamename
-	//fmt.Println(gamename)
-	c.Data["url"] = Url
-	c.TplName = "game.html"
-}
-
-//传递参数游戏的链接game_url
-func Get(game_url string) string{
+	var user interface{}
+	//通过session获取当下客户的用户名
+	user = c.GetSession("loginuser")
+	fmt.Println("user:",user)
+	//接口传递过来数据类型需要断言 即user.(string)
+	res :=&CreatePlay{
+		MerchantId:"XBW001",
+		CoUserName:user.(string)} //请求api中的Data的提取
+		fmt.Println("res:",res)
+	data_ := Access("createplayer",res)
+	fmt.Println("data_",data_)
+	//调用get函数
+	s := Get()
+	fmt.Println(s)
+	c.Data["s"]=s
+	var st string
+	//参数传递解析
 	params := url.Values{}
-	Url, err := url.Parse(game_url)
+	//参数剪切拼接
+	Url, err := url.Parse(st)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -77,8 +70,8 @@ func Get(game_url string) string{
 	}
 	//进行整型转字符串传入
 	ID = strconv.Itoa(list.GameUserID)
-	params.Set("CoUserName", "a")
-	params.Set("nickname", "a")
+	params.Set("CoUserName", user.(string))
+	params.Set("nickname", user.(string))
 	params.Set("AccessToken", list.AccessToken)
 	params.Set("terminaltype", "MacOS")
 	params.Set("GameUserID", ID)
@@ -91,9 +84,38 @@ func Get(game_url string) string{
 	Url.RawQuery = params.Encode()
 	urlPath := Url.String()
 	new_url := strings.Replace(urlPath,"&","&&",10)
-	//fmt.Println(new_url)
-	s := string(new_url)
-	return s
+	fmt.Println(new_url)
+	//s := string(new_url)
+	fmt.Println(s)
+	c.TplName = "game.html"
+}
+
+
+//传递参数游戏的链接game_url
+func Get() []GameListDataUnit{
+
+	var gamename= make([]GameListDataUnit,0)
+	//初始化gamename数组
+	//var gamename = make([]string,0)
+
+	// 返回解码后的gamelist的data值
+	s, _ := Decrypt(GameList())
+	list := &GameListData{}
+	//fmt.Println(s)
+	//对gamelist的datajson进行解码
+	if err := json.Unmarshal([]byte(s), &list); err != nil {
+		panic(err)
+	}
+	//var Url string
+	for _, v := range list.GameListDataArray {
+		//gamename = append(gamename,v.GameName)
+		gamename = append(gamename,v)
+		//fmt.Println(v.Url)
+	}
+	fmt.Println("gamename:",gamename)
+	return gamename
+	//fmt.Println(gamename)
+
 }
 
 
@@ -119,3 +141,68 @@ Mac OS 3;
 
 商户带入参数需要先对BackUrl进行encodeURIComponent()编码，
 再对整个参数进行encodeURIComponent()编码*/
+
+
+
+
+/*params := url.Values{}
+Url, err := url.Parse(game_url)
+if err != nil {
+	panic(err.Error())
+}
+//调用GetAccessToken()方法返回值
+var ID string
+Data := GetAccessToken()
+data,_ := Decrypt(Data)
+//list_ := &coCreatePlay{}
+var list coCreaterPlay
+if err := json.Unmarshal([]byte(data),&list);err != nil{
+	panic(err)
+}
+//进行整型转字符串传入
+ID = strconv.Itoa(list.GameUserID)
+params.Set("CoUserName", "a")
+params.Set("nickname", "a")
+params.Set("AccessToken", list.AccessToken)
+params.Set("terminaltype", "MacOS")
+params.Set("GameUserID", ID)
+params.Set("merchantid", "XBW001")
+params.Set("model", "2")
+params.Set("music", "true")
+params.Set("SoundEffect", "true")
+params.Set("BackUrl", "close")
+//如果参数中有中文参数,这个方法会进行URLEncode
+Url.RawQuery = params.Encode()
+urlPath := Url.String()
+new_url := strings.Replace(urlPath,"&","&&",10)
+//fmt.Println(new_url)
+s := string(new_url)
+return s*/
+
+
+
+
+
+
+
+//var gamename= make([]GameListDataUnit,0)
+//初始化gamename数组
+/*var gamename = make([]string,0)
+// 返回解码后的gamelist的data值
+s, _ := Decrypt(GameList())
+list := &GameListData{}
+//fmt.Println(s)
+//对gamelist的datajson进行解码
+if err := json.Unmarshal([]byte(s), &list); err != nil {
+	panic(err)
+}
+var Url string
+for _, v := range list.GameListDataArray {
+	//gamename = append(gamename,v.GameName)
+	gamename = append(gamename,Get(v.Url))
+	//fmt.Println(v.Url)
+}*/
+//fmt.Println(gamename)
+//c.Data["gamename"] = gamename
+//fmt.Println(gamename)
+//c.Data["url"] = Url
