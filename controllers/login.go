@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"strings"
 	"io/ioutil"
+	"fmt"
 )
 
 
@@ -30,6 +31,9 @@ func (c *LoginController) Post(){
 	o := orm.NewOrm()
 	user := models.User{}
 	username := c.GetString("Username")
+	fmt.Println("username:",username)
+	num := c.GetString("number")
+	fmt.Println("num:",num)
 	password := c.GetString("Password")
 	//2.判断是否合法
 	if username=="" || password == ""{
