@@ -33,6 +33,11 @@ func init() {
 					&controllers.WithController{},
 				),
 			),
+			beego.NSNamespace("/getusertotalbalance",
+				beego.NSInclude(
+					&controllers.GetUserController{},
+				),
+			),
 		)
 	beego.AddNamespace(ns)
 }
