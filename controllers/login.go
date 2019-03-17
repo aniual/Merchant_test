@@ -10,7 +10,6 @@ import (
 	"net/http"
 	"strings"
 	"io/ioutil"
-	"fmt"
 )
 
 
@@ -31,8 +30,8 @@ func (c *LoginController) Post(){
 	o := orm.NewOrm()
 	user := models.User{}
 	username := c.GetString("Username")
-	fmt.Println("username:",username)
 	password := c.GetString("Password")
+	number := c.GetString("number")
 	//2.判断是否合法
 	if username=="" || password == ""{
 		c.Abort("输入错误")
@@ -53,6 +52,7 @@ func (c *LoginController) Post(){
 		return
 	}
 	c.SetSession("loginuser",username)
+	c.Ctx.SetCookie("number",number)
 	res :=&CreatePlay{
 		MerchantId:"XBW001",
 		CoUserName:username} //请求api中的Data的提取
