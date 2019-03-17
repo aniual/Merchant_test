@@ -7,6 +7,7 @@ import (
 	"net/url"
 	"strings"
 	"strconv"
+	//"fmt"
 	"fmt"
 )
 
@@ -50,6 +51,8 @@ func (c *GameListController)  Get() {
 	s := Get()
 	//切片s便利到前端页面
 	//参数传递解析
+	num := c.GetString("number")
+	fmt.Println("num:",num)
 	params := url.Values{}
 
 	for _,v := range s{
@@ -67,14 +70,13 @@ func (c *GameListController)  Get() {
 			panic(err)
 		}
 		//进行整型转字符串传入
-
 		ID = strconv.Itoa(list.GameUserID)
 		params.Set("CoUserName", user.(string))
 		params.Set("nickname", user.(string))
 		params.Set("AccessToken", list.AccessToken)
 		params.Set("terminaltype", "MacOS")
 		params.Set("GameUserID", ID)
-		params.Set("merchantid", num)
+		params.Set("merchantid", "XBW001")
 		params.Set("model", "2")
 		params.Set("music", "true")
 		params.Set("SoundEffect", "true")
@@ -92,10 +94,6 @@ func (c *GameListController)  Get() {
 
 	}
 	c.Data["gamename"] = game_name
-	//fmt.Println("new_url:",new_url)
-	//fmt.Println()
-	c.Data["s"] = s
-	//c.Data["new_url"]=new_url
 	c.TplName = "game.html"
 }
 
