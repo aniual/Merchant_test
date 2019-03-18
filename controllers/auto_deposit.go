@@ -33,7 +33,6 @@ func (c *AutoController) Post() {
 	var num models.AutoDeposit
 	data := c.Ctx.Input.RequestBody
 	err := json.Unmarshal(data, &num)
-	//fmt.Println(err)
 	if err == nil {
 		//创建一个orm对象
 		o := orm.NewOrm()
@@ -47,7 +46,6 @@ func (c *AutoController) Post() {
 		//Datajson进行加密
 		json_auto,_ :=json.Marshal(auto)
 		json_encode,_ := Encrypt(json_auto)
-
 		if num.ReqAmount <= mon {
 			c.Data["json"] = map[string]interface{}{"result":0,"reason":"","Data":json_encode}
 		}else {
