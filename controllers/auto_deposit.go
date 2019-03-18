@@ -30,7 +30,7 @@ func (c *AutoController) Post() {
 	data := c.Ctx.Input.RequestBody
 	err := json.Unmarshal(data, &num)
 	fmt.Println("Serialnum:",num.Serialnum)
-	auto := &AutoDepositDataunit{0,"001",num.Serialnum}
+	auto := &AutoDepositDataunit{1000,"001",num.Serialnum}
 	//Datajson进行加密
 	json_auto,_ :=json.Marshal(auto)
 	json_encode,_ := Encrypt(json_auto)

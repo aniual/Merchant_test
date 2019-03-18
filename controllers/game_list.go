@@ -37,9 +37,9 @@ type coCreaterPlay struct {
 //get请求游戏列表数据
 func (c *GameListController)  Get() {
 	var game_name= make([]GameListDataUnit,0)
-	var user interface{}
+	//var user string
 	//通过session获取当下客户的用户名
-	user = c.GetSession("loginuser")
+	user := c.GetSession("loginuser")
 	//接口传递过来数据类型需要断言 即user.(string)
 	res :=&CreatePlay{
 		MerchantId:"XBW001",
