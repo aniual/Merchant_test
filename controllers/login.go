@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"strings"
 	"io/ioutil"
-	"fmt"
+	_"fmt"
 )
 
 
@@ -33,8 +33,6 @@ func (c *LoginController) Post(){
 	username := c.GetString("Username")
 	password := c.GetString("Password")
 	number := c.GetString("number")
-	money := c.GetString("money")
-	fmt.Println(money)
 	//2.判断是否合法
 	if username=="" || password == ""{
 		c.Abort("输入错误")
@@ -54,6 +52,8 @@ func (c *LoginController) Post(){
 		c.TplName = "login.html"
 		return
 	}
+
+
 	//设置用户名session
 	c.SetSession("loginuser",username)
 	//设置商户号cookie
@@ -62,9 +62,9 @@ func (c *LoginController) Post(){
 		MerchantId:"XBW001",
 		CoUserName:username} //请求api中的Data的提取
 	Pubilc_("createplayer",res)
+
 	c.Redirect("/gamelist",302)
 }
-
 
 
 //用于请求的公共代码，直接调用此方法

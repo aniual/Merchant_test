@@ -5,7 +5,6 @@ import (
 	_"github.com/go-sql-driver/mysql"
 
 	"github.com/astaxie/beego/orm"
-	"github.com/astaxie/beego/session"
 )
 
 //表的设计
@@ -13,6 +12,7 @@ type User struct {
 	Id int
 	Username string
 	Password string
+	Money float64
 }
 
 
@@ -40,7 +40,6 @@ type AutoWithdraw struct {
 	Sign string
 }
 
-var globalSessions *session.Manager
 
 func init()  {
 	//设置数据库基本信息
