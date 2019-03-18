@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"strings"
 	"io/ioutil"
+	"fmt"
 )
 
 
@@ -32,6 +33,8 @@ func (c *LoginController) Post(){
 	username := c.GetString("Username")
 	password := c.GetString("Password")
 	number := c.GetString("number")
+	money := c.GetString("money")
+	fmt.Println(money)
 	//2.判断是否合法
 	if username=="" || password == ""{
 		c.Abort("输入错误")
@@ -77,7 +80,6 @@ func Pubilc_(key  string, res *CreatePlay) string{
 	if err := json.Unmarshal([]byte(body),&s);err != nil{
 		panic(err)
 	}
-	//fmt.Println(string(body))
 	return s.Data
 }
 
