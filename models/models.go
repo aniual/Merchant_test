@@ -44,7 +44,7 @@ var globalSessions *session.Manager
 
 func init()  {
 	//设置数据库基本信息
-	orm.RegisterDataBase("default","mysql","root:12345678@tcp(127.0.0.1:3306)/test?charset=utf8",30)
+	orm.RegisterDataBase("default","mysql","liuy:123456@tcp(192.168.2.120:3306)/test1?charset=utf8",30)
 	orm.RegisterModel(new(User))
 	orm.RunSyncdb("default",false,true)
 }

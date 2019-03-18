@@ -29,7 +29,8 @@ func (c *AutoController) Post() {
 	var num models.AutoDeposit
 	data := c.Ctx.Input.RequestBody
 	err := json.Unmarshal(data, &num)
-	fmt.Println("Serialnum:",num.Serialnum)
+	money := c.Ctx.GetCookie("money")
+	fmt.Println("money:",money)
 	auto := &AutoDepositDataunit{1000,"001",num.Serialnum}
 	//Datajson进行加密
 	json_auto,_ :=json.Marshal(auto)

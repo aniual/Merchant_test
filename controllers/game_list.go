@@ -49,8 +49,6 @@ func (c *GameListController)  Get() {
 	//调用get函数
 	s := Get()
 	//参数传递解析
-	//num := c.GetString("number")
-	//fmt.Println("num:",num)
 	num:= c.Ctx.GetCookie("number")
 	params := url.Values{}
 	//	遍历s对url传递
