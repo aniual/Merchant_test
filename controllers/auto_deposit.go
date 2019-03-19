@@ -59,7 +59,6 @@ func (c *AutoController) Post() {
 	} else {
 		c.Data["json"] = map[string]interface{}{"result": 1, "reason": "", "Data": err.Error()}
 	}
-
 	/*auto := &AutoDepositDataunit{100, "001", num.Serialnum}
 	//Datajson进行加密
 	json_auto, _ := json.Marshal(auto)
