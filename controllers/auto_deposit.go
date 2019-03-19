@@ -38,18 +38,24 @@ func (c *AutoController) Post() {
 		o := orm.NewOrm()
 		var u models.User
 		err = o.Raw("SELECT money FROM user WHERE username = ?", num.CoUserName).QueryRow(&u)
-		fmt.Println(u.Money)
 		//创建对象
-		var mon float64
-		mon = u.Money
-		auto := &AutoDepositDataunit{num.ReqAmount,"001",num.Serialnum}
-		//Datajson进行加密
-		json_auto,_ :=json.Marshal(auto)
-		json_encode,_ := Encrypt(json_auto)
+		//var mon float64
+		mon := u.Money
+
 		if num.ReqAmount <= mon {
+			auto := &AutoDepositDataunit{num.ReqAmount,"001",num.Serialnum}
+			//Datajson进行加密
+			json_auto,_ :=json.Marshal(auto)
+			fmt.Println("json_auto:",string(json_auto))
+			json_encode,_ := Encrypt(json_auto)
 			c.Data["json"] = map[string]interface{}{"result":0,"reason":"","Data":json_encode}
 		}else {
-			c.Data["json"] = map[string]interface{}{"result":1,"reason":"","Data":"err"}
+			auto := &AutoDepositDataunit{num.MiniAmount,"001",num.Serialnum}
+			//Datajson进行加密
+			json_auto,_ :=json.Marshal(auto)
+			fmt.Println("json_auto:",string(json_auto))
+			json_encode,_ := Encrypt(json_auto)
+			c.Data["json"] = map[string]interface{}{"result":0,"reason":"","Data":json_encode}
 		}
 	}else {
 		c.Data["json"] = map[string]interface{}{"result":1,"reason":"","Data":err.Error()}
