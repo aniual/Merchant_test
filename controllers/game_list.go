@@ -82,12 +82,8 @@ func (c *GameListController)  Get() {
 		Url.RawQuery = params.Encode()
 		urlPath := Url.String()
 		new_url := strings.Replace(urlPath,"&","&&",10)
-		//fmt.Println("new_url:",new_url)
 		a := GameListDataUnit{v.GameName,new_url}
-		//v.Url = new_url
-		//s :=append(s, new_url)
 		game_name = append(game_name, a)
-		//fmt.Println("game_name:",game_name)
 
 	}
 	c.Data["gamename"] = game_name
@@ -108,7 +104,6 @@ func Get() []GameListDataUnit{
 	}
 	for _, v := range list.GameListDataArray {
 		gamename = append(gamename,v)
-		//fmt.Println(v.Url)
 	}
 	return gamename
 }

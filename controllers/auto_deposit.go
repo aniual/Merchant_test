@@ -4,7 +4,6 @@ import (
 	"Merchants_test/models"
 	_ "Merchants_test/models"
 	"encoding/json"
-	"fmt"
 	_ "strconv"
 
 	"github.com/astaxie/beego"
@@ -36,21 +35,20 @@ func (c *AutoController) Post() {
 		o := orm.NewOrm()
 		var u models.User
 		err = o.Raw("SELECT money FROM user WHERE username = ?", num.CoUserName).QueryRow(&u)
+		//调用money的值进行赋值
 		mon := u.Money
+		//进行比较接口数据给与返回body
 		if num.ReqAmount <= mon {
 			auto := &AutoDepositDataunit{num.ReqAmount, "001", num.Serialnum}
-			//Datajson进行加密
+			//auto进行解析
 			json_auto, _ := json.Marshal(auto)
-			fmt.Println("json_auto:", string(json_auto))
+			//对json_auto进行加密
 			json_encode, _ := Encrypt(json_auto)
-			fmt.Println("json_encode:", string(json_encode))
 			c.Data["json"] = map[string]interface{}{"result": 0, "reason": "", "Data": json_encode}
-			fmt.Println("c.Data", c.Data["json"])
 		}else if num.ReqAmount >= mon && num.MiniAmount <= mon{
 			auto := &AutoDepositDataunit{num.MiniAmount, "001", num.Serialnum}
-			//Datajson进行加密
+			//对auto进行加密
 			json_auto, _ := json.Marshal(auto)
-			fmt.Println("json_auto:", string(json_auto))
 			json_encode, _ := Encrypt(json_auto)
 			c.Data["json"] = map[string]interface{}{"result": 0, "reason": "", "Data": json_encode}
 		}else if num.MiniAmount > mon{

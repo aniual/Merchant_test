@@ -8,17 +8,9 @@ import (
 	"bytes"
 )
 
-
 var Key = []byte("B31F2A75FBF94099")
 
 var Iv = []byte("1234567890123456")
-
-
-/*func main() {
-
-	s, _:= Decrypt("66p1ohg0GJ6rZNY24fUvYIOT2y/twIy+npYxccVV6rY=")
-	fmt.Println(Encrypt([]byte(s)))
-}*/
 
 
 func Encrypt(origData []byte) (string, error) {
