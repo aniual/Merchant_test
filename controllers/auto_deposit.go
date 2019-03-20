@@ -53,8 +53,8 @@ func (c *AutoController) Post() {
 			fmt.Println("json_auto:", string(json_auto))
 			json_encode, _ := Encrypt(json_auto)
 			c.Data["json"] = map[string]interface{}{"result": 0, "reason": "", "Data": json_encode}
-		}else if num.ReqAmount >= mon && num.MiniAmount >= mon{
-			c.Data["json"] = map[string]interface{}{"result": 1, "reason": "", "Data": err.Error()}
+		}else if num.MiniAmount > mon{
+			c.Data["json"] = map[string]interface{}{"result": 1, "reason": "余额不足带入失败", "Data": "err"}
 		}
 	} else {
 		c.Data["json"] = map[string]interface{}{"result": 1, "reason": "", "Data": err.Error()}
