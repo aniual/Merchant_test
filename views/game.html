@@ -6,6 +6,14 @@
 </head>
 <body>
     <div>
+        账户余额 <input type="text" placeholder={{.money}} style="width: 80px;height: 15px"><button>充值</button>
+    </div>
+    <div>
+        登录用户 <button>{{.username}}</button>
+    </div>
+
+    <br>
+    <div>
         游戏列表
     </div>
     {{range .gamename}}

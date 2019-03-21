@@ -7,6 +7,9 @@ import (
 	"net/url"
 	"strings"
 	"sort"
+	"Merchants_test/models"
+	"github.com/astaxie/beego/orm"
+	"strconv"
 )
 
 
@@ -48,7 +51,7 @@ func (c *GameListController)  Get() {
 	//调用get函数
 	s := Get()
 	//参数传递解析
-	num:= c.Ctx.GetCookie("number")
+	//num:= c.Ctx.GetCookie("number")
 	params := url.Values{}
 	//	遍历s对url传递
 	for _,v := range s{
@@ -57,7 +60,7 @@ func (c *GameListController)  Get() {
 			panic(err.Error())
 		}
 		//调用GetAccessToken()方法返回值
-		//var ID string
+		var ID string
 		//调用Decrypt方法解密Data
 		data,_ := Decrypt(Data)
 		var list coCreaterPlay
@@ -66,17 +69,17 @@ func (c *GameListController)  Get() {
 			panic(err)
 		}
 		//进行整型转字符串传入
-		//ID = strconv.Itoa(list.GameUserID)
-		params.Set("CoUserName", "YLTEST99_"+user.(string))
+		ID = strconv.Itoa(list.GameUserID)
+		params.Set("CoUserName", user.(string))
 		params.Set("nickname", user.(string))
 		params.Set("AccessToken", list.AccessToken)
 		params.Set("terminaltype", "MacOS")
-		params.Set("GameUserID", "YLTEST99")
-		params.Set("merchantid", num)
+		params.Set("GameUserID", ID)
+		params.Set("merchantid", "XBW001")
 		params.Set("model", "2")
 		params.Set("music", "true")
 		params.Set("SoundEffect", "true")
-		params.Set("BackUrl", "close")
+		params.Set("BackUrl", "127.0.0.1:8081/gamelist")
 		//如果参数中有中文参数,这个方法会进行URLEncode
 		Url.RawQuery = params.Encode()
 		urlPath := Url.String()
@@ -86,6 +89,13 @@ func (c *GameListController)  Get() {
 		game_name = append(game_name, a)
 		//fmt.Println("game_name:",game_name)
 	}
+	var u models.User
+	o := orm.NewOrm()
+	o.Raw("SELECT money FROM user WHERE username = ?", user).QueryRow(&u)
+	//调用money的值进行赋值
+	mon := u.Money
+	c.Data["money"] = mon
+	c.Data["username"] = user
 	c.Data["gamename"] = game_name
 	c.TplName = "game.html"
 }
@@ -96,17 +106,22 @@ func Get() []GameListDataUnit{
 	//初始化gamename数组
 	var gamename []GameListDataUnit
 	// 返回解码后的gamelist的data值
+	// 返回解码后的gamelist的data值
 	s, _ := Decrypt(GameList())
 	list := &GameListData{}
 	//对gamelist的datajson进行解码
 	if err := json.Unmarshal([]byte(s), &list); err != nil {
 		panic(err)
 	}
+	//用map的key键来进行排序
 	var names []int
+	//将值添加到names切片中
 	for name := range list.GameListDataArray {
 		names = append(names,name)
 	}
+	//调用sort方法有序化
 	sort.Ints(names)
+	//遍历key进行排序
 	for _,name := range names{
 		gamename = append(gamename, list.GameListDataArray[name])
 	}
