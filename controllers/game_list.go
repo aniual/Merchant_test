@@ -102,11 +102,15 @@ func Get() []GameListDataUnit{
 	if err := json.Unmarshal([]byte(s), &list); err != nil {
 		panic(err)
 	}
+	//用map的key键来进行排序
 	var names []int
+	//将值添加到names切片中
 	for name := range list.GameListDataArray {
 		names = append(names,name)
 	}
+	//调用sort方法有序化
 	sort.Ints(names)
+	//使用key有序
 	for _,name := range names{
 		gamename = append(gamename, list.GameListDataArray[name])
 	}
