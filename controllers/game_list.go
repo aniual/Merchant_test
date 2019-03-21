@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"net/url"
 	"strings"
-	"fmt"
+	"sort"
 )
 
 
@@ -31,7 +31,7 @@ type coCreaterPlay struct {
 	AccessToken string `json:"AccessToken"`
 
 }
-
+//var gamename = []string{"奔驰宝马","骰宝","炸金花鱼虾蟹","抢庄牌九","极速炸金花","水浒传","西游争霸","金鲨银鲨","龙虎斗","百人牛牛","红黑大战" ,"财神连线" ,"森林舞会" ,"百家乐" ,"ATT", "赛马" ,"二十一点" ,"二八杠" ,"水果机" ,"龙凤呈祥" ,"百人炸金花","通比牛牛" ,"抢庄牛牛" ,"五龙争霸"}
 
 //get请求游戏列表数据
 func (c *GameListController)  Get() {
@@ -43,7 +43,7 @@ func (c *GameListController)  Get() {
 	res :=&CreatePlay{
 		MerchantId:"XBW001",
 		CoUserName:user.(string)} //请求api中的Data的提取
-		//调用Access函数，返回Data
+	//调用Access函数，返回Data
 	Data := Access("getaccesstoken",res)
 	//调用get函数
 	s := Get()
@@ -51,9 +51,8 @@ func (c *GameListController)  Get() {
 	num:= c.Ctx.GetCookie("number")
 	params := url.Values{}
 	//	遍历s对url传递
-	for k,v := range s{
+	for _,v := range s{
 		Url, err := url.Parse(v.Url)
-		fmt.Println("k:",k)
 		if err != nil {
 			panic(err.Error())
 		}
@@ -83,6 +82,7 @@ func (c *GameListController)  Get() {
 		urlPath := Url.String()
 		new_url := strings.Replace(urlPath,"&","&&",10)
 		a := GameListDataUnit{v.GameName,new_url}
+		//fmt.Println(v.GameName)
 		game_name = append(game_name, a)
 		//fmt.Println("game_name:",game_name)
 	}
@@ -94,18 +94,21 @@ func (c *GameListController)  Get() {
 //传递参数游戏的链接game_url
 func Get() []GameListDataUnit{
 	//初始化gamename数组
-	var gamename= make([]GameListDataUnit,0)
+	var gamename []GameListDataUnit
 	// 返回解码后的gamelist的data值
 	s, _ := Decrypt(GameList())
 	list := &GameListData{}
-	//fmt.Println("s:",s)
 	//对gamelist的datajson进行解码
 	if err := json.Unmarshal([]byte(s), &list); err != nil {
 		panic(err)
 	}
-	for _, v := range list.GameListDataArray {
-		gamename = append(gamename,v)
+	var names []int
+	for name := range list.GameListDataArray {
+		names = append(names,name)
+	}
+	sort.Ints(names)
+	for _,name := range names{
+		gamename = append(gamename, list.GameListDataArray[name])
 	}
 	return gamename
 }
-
