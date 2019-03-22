@@ -35,6 +35,13 @@ type CreatePlay struct {
 	Sign string
 }
 
+type GetAccessToken struct {
+	MerchantId string
+	CoUserName string
+	Sign string
+}
+
+
 //api接口请求
 //参数key为接口地址
 //res为Post参数

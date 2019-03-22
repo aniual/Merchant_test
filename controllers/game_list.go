@@ -5,11 +5,12 @@ import (
 	"github.com/astaxie/beego"
 	"encoding/json"
 	"net/url"
-	"strings"
 	"sort"
 	"Merchants_test/models"
 	"github.com/astaxie/beego/orm"
 	"strconv"
+	"fmt"
+	"strings"
 )
 
 
@@ -34,7 +35,6 @@ type coCreaterPlay struct {
 	AccessToken string `json:"AccessToken"`
 
 }
-//var gamename = []string{"奔驰宝马","骰宝","炸金花鱼虾蟹","抢庄牌九","极速炸金花","水浒传","西游争霸","金鲨银鲨","龙虎斗","百人牛牛","红黑大战" ,"财神连线" ,"森林舞会" ,"百家乐" ,"ATT", "赛马" ,"二十一点" ,"二八杠" ,"水果机" ,"龙凤呈祥" ,"百人炸金花","通比牛牛" ,"抢庄牛牛" ,"五龙争霸"}
 
 //get请求游戏列表数据
 func (c *GameListController)  Get() {
@@ -43,24 +43,19 @@ func (c *GameListController)  Get() {
 	//通过session获取当下客户的用户名
 	user := c.GetSession("loginuser")
 	//接口传递过来数据类型需要断言 即user.(string)
-	res :=&CreatePlay{
+	res :=&GetAccessToken{
 		MerchantId:"XBW001",
 		CoUserName:user.(string)} //请求api中的Data的提取
 	//调用Access函数，返回Data
-	Data := Access("getaccesstoken",res)
+	Data := Access("getaccesstoken", res)
 	//调用get函数
 	s := Get()
 	//参数传递解析
 	//num:= c.Ctx.GetCookie("number")
-	params := url.Values{}
+	//params := url.Values{}
 	//	遍历s对url传递
 	for _,v := range s{
-		Url, err := url.Parse(v.Url)
-		if err != nil {
-			panic(err.Error())
-		}
 		//调用GetAccessToken()方法返回值
-		var ID string
 		//调用Decrypt方法解密Data
 		data,_ := Decrypt(Data)
 		var list coCreaterPlay
@@ -68,27 +63,53 @@ func (c *GameListController)  Get() {
 		if err := json.Unmarshal([]byte(data),&list);err != nil{
 			panic(err)
 		}
+		gameid := strconv.Itoa(list.GameUserID)
+		name := url.QueryEscape(user.(string))
+		//keysUrl := "/?CoUserName=" + name + "&&nickname=" + encodeURIComponent(user.(string)) + "&&AccessToken=" + encodeURIComponent(list.AccessToken) + "&&terminaltype=" + encodeURIComponent("MacOS")+ "&&GameUserID=" + encodeURIComponent(gameid) + "&&merchantid=" + encodeURIComponent("XBW001") + "&&model=" + encodeURIComponent("2") + "&&music=" + encodeURIComponent("true") + "&&SoundEffect=" + encodeURIComponent("true" )+ "&&BackUrl=" + encodeURIComponent(encodeURIComponent("http://192.168.4.216:8181/gamelist"))
+		keysUrl := "CoUserName=" + name + "&&nickname=" + user.(string) + "&&AccessToken=" +list.AccessToken + "&&terminaltype=" + "MacOS"+ "&&GameUserID=" + gameid + "&&merchantid=" + "XBW001" + "&&model=" + "2" + "&&music=" + "true" + "&&SoundEffect=" + "true" + "&&BackUrl=" + encodeURIComponent("http://192.168.4.216:8181/gamelist/?")
+		keysURL := encodeURIComponent(keysUrl)
+		kUrl := v.Url + "/?"+ keysURL
+		//fmt.Println(keysUrl)
+		//keysURL := encodeURIComponent(keysUrl)
+		//fmt.Println(keysURL)
+		/*Url, err := url.Parse(v.Url)
+		if err != nil {
+			panic(err.Error())
+		}
+		//调用GetAccessToken()方法返回值
+		//调用Decrypt方法解密Data
+		data,_ := Decrypt(Data)
+		var list coCreaterPlayg
+		//解码返回data json字符串
+		if err := json.Unmarshal([]byte(data),&list);err != nil{
+			panic(err)
+		}
 		//进行整型转字符串传入
-		ID = strconv.Itoa(list.GameUserID)
-		params.Set("CoUserName", user.(string))
-		params.Set("nickname", user.(string))
-		params.Set("AccessToken", list.AccessToken)
-		params.Set("terminaltype", "MacOS")
-		params.Set("GameUserID", ID)
-		params.Set("merchantid", "XBW001")
-		params.Set("model", "2")
-		params.Set("music", "true")
-		params.Set("SoundEffect", "true")
-		params.Set("BackUrl", "127.0.0.1:8081/gamelist")
+		str := "http://192.168.2.102:8181/gamelist"
+		s_url := url.QueryEscape(str)
+		gameid := strconv.Itoa(list.GameUserID)
+		params.Add("CoUserName", user.(string))
+		params.Add("nickname", user.(string))
+		params.Add("AccessToken", list.AccessToken)
+		params.Add("terminaltype", "MacOS")
+		params.Add("GameUserID", gameid)
+		params.Add("merchantid", "XBW001")
+		params.Add("model", "2")
+		params.Add("music", "true")
+		params.Add("SoundEffect", "true")
+		params.Add("BackUrl", s_url)
 		//如果参数中有中文参数,这个方法会进行URLEncode
 		Url.RawQuery = params.Encode()
 		urlPath := Url.String()
-		new_url := strings.Replace(urlPath,"&","&&",10)
-		a := GameListDataUnit{v.GameName,new_url}
-		//fmt.Println(v.GameName)
+		new_url := strings.Replace(urlPath,"&","&&",10)*/
+		//fmt.Println(new_url)
+		//total_url := url.QueryEscape(new_url)
+		//fmt.Println(total_url)
+		a := GameListDataUnit{v.GameName,kUrl}
+		//fmt.Println(keysUrl)
 		game_name = append(game_name, a)
-		//fmt.Println("game_name:",game_name)
 	}
+
 	var u models.User
 	o := orm.NewOrm()
 	o.Raw("SELECT money FROM user WHERE username = ?", user).QueryRow(&u)
@@ -98,8 +119,39 @@ func (c *GameListController)  Get() {
 	c.Data["username"] = user
 	c.Data["gamename"] = game_name
 	c.TplName = "game.html"
+
 }
 
+
+func (c *GameListController) Post(){
+	//取到充值数据
+	money,err := c.GetFloat("money")
+	fmt.Println("money:",money)
+	if err == nil{
+		if money <= 0 {
+			beego.Info("输入正确金额")
+			c.Redirect("/gamelist",302)
+			return
+		}else{
+			o := orm.NewOrm()
+			var u models.User
+			u = models.User{Id:1}
+			err := o.Raw("SELECT money FROM user WHERE id = ?", u.Id).QueryRow(&u)
+			if err == nil{
+				fmt.Println("money:",u.Money)
+			}
+			//调用money的值进行赋值
+			mon := u.Money
+			if o.Read(&u) == nil{
+				u.Money = mon + money
+				if num,err := o.Update(&u,"money");err == nil{
+					fmt.Println(num)
+				}
+			}
+		}
+	}
+	c.Redirect("/gamelist",302)
+}
 
 //传递参数游戏的链接game_url
 func Get() []GameListDataUnit{
@@ -126,4 +178,10 @@ func Get() []GameListDataUnit{
 		gamename = append(gamename, list.GameListDataArray[name])
 	}
 	return gamename
+}
+
+func encodeURIComponent(str string) string{
+	r := url.QueryEscape(str)
+	r = strings.Replace(r,"+","%20",-1)
+	return r
 }

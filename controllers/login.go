@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"strings"
 	"io/ioutil"
-	_"fmt"
+	"fmt"
 )
 
 
@@ -52,8 +52,6 @@ func (c *LoginController) Post(){
 		c.TplName = "login.html"
 		return
 	}
-
-
 	//设置用户名session
 	c.SetSession("loginuser",username)
 	//设置商户号cookie
@@ -84,7 +82,7 @@ func Pubilc_(key  string, res *CreatePlay) string{
 }
 
 
-func Access(key  string, res *CreatePlay) string{
+func Access(key  string, res *GetAccessToken) string{
 	s :=&Server{}
 	key_body, _ := json.Marshal(res)
 	resp, err := http.Post("http://192.168.2.102:8443/" +key, "application/json", strings.NewReader(string(key_body)))
@@ -95,7 +93,10 @@ func Access(key  string, res *CreatePlay) string{
 	body, _ := ioutil.ReadAll(resp.Body)
 	if err := json.Unmarshal([]byte(body),&s);err != nil{
 		panic(err)
+
 	}
+	//fmt.Println("s:",&s)
+	fmt.Println(string(body))
 	return s.Data
 }
 

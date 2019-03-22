@@ -5,13 +5,13 @@
     <title>游戏列表</title>
 </head>
 <body>
-    <div>
-        账户余额 <input type="text" placeholder={{.money}} style="width: 80px;height: 15px"><button>充值</button>
-    </div>
+    <form action="/gamelist" method="post">
+        <div>
+            账户余额 <input type="text" name="money" placeholder={{.money}} style="width: 80px;height: 15px"><button>充值</button>
+        </div>
     <div>
         登录用户 <button>{{.username}}</button>
     </div>
-
     <br>
     <div>
         游戏列表
@@ -19,6 +19,7 @@
     {{range .gamename}}
     <a href="{{.Url}}">{{.GameName}}</a><br>
     {{end}}
+    </form>
 </body>
 </html>
 </html>

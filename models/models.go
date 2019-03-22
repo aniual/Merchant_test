@@ -33,10 +33,9 @@ type AutoDeposit struct {
 type AutoWithdraw struct {
 	MerchantId string
 	CoUserName string
-	ReqAmount float64
-	MiniAmount float64
-	GameId string
+	Amount float64
 	Type int
+	GameId string
 	Serialnum string
 	Sign string
 }
