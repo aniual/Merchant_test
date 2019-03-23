@@ -172,22 +172,17 @@ func Get() []GameListDataUnit{
 	}
 	//调用sort方法有序化
 	sort.Ints(names)
-<<<<<<< HEAD
 	//遍历key进行排序
-=======
 	//使用key有序
->>>>>>> master
 	for _,name := range names{
 		gamename = append(gamename, list.GameListDataArray[name])
 	}
 	return gamename
 }
-<<<<<<< HEAD
+
 
 func encodeURIComponent(str string) string{
 	r := url.QueryEscape(str)
 	r = strings.Replace(r,"+","%20",-1)
 	return r
 }
-=======
->>>>>>> master
