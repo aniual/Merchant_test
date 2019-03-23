@@ -65,7 +65,6 @@ func (c *GameListController)  Get() {
 		}
 		gameid := strconv.Itoa(list.GameUserID)
 		name := url.QueryEscape(user.(string))
-		//keysUrl := "/?CoUserName=" + name + "&&nickname=" + encodeURIComponent(user.(string)) + "&&AccessToken=" + encodeURIComponent(list.AccessToken) + "&&terminaltype=" + encodeURIComponent("MacOS")+ "&&GameUserID=" + encodeURIComponent(gameid) + "&&merchantid=" + encodeURIComponent("XBW001") + "&&model=" + encodeURIComponent("2") + "&&music=" + encodeURIComponent("true") + "&&SoundEffect=" + encodeURIComponent("true" )+ "&&BackUrl=" + encodeURIComponent(encodeURIComponent("http://192.168.4.216:8181/gamelist"))
 		keysUrl := "CoUserName=" + name + "&&nickname=" + user.(string) + "&&AccessToken=" +list.AccessToken + "&&terminaltype=" + "MacOS"+ "&&GameUserID=" + gameid + "&&merchantid=" + "XBW001" + "&&model=" + "2" + "&&music=" + "true" + "&&SoundEffect=" + "true" + "&&BackUrl=" + encodeURIComponent("http://192.168.4.216:8181/gamelist/?")
 		keysURL := encodeURIComponent(keysUrl)
 		kUrl := v.Url + "/?"+ keysURL
