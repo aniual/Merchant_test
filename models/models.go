@@ -33,7 +33,7 @@ type AutoDeposit struct {
 type AutoWithdraw struct {
 	MerchantId string
 	CoUserName string
-	Amount float64
+	Amount string
 	Type int
 	GameId string
 	Serialnum string

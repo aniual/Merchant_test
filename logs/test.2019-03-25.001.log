@@ -1,0 +1,133 @@
+2019/03/25 19:26:15.314 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 19:26:24.116 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 19:27:13.727 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 19:27:18.535 [C] [asm_amd64.s:522]  the request url is  /gamelist
+2019/03/25 19:27:18.535 [C] [asm_amd64.s:522]  Handler crashed with error interface conversion: interface {} is nil, not string
+2019/03/25 19:27:18.535 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:522
+2019/03/25 19:27:18.536 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/panic.go:513
+2019/03/25 19:27:18.536 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/iface.go:248
+2019/03/25 19:27:18.536 [C] [asm_amd64.s:522]  /Users/hz/go/src/Merchants_test/controllers/game_list.go:48
+2019/03/25 19:27:18.536 [C] [asm_amd64.s:522]  /Users/hz/go/src/github.com/astaxie/beego/router.go:834
+2019/03/25 19:27:18.536 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:2741
+2019/03/25 19:27:18.536 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:1847
+2019/03/25 19:27:18.536 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:1333
+2019/03/25 19:29:49.226 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 19:33:22.178 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 19:33:54.082 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 19:48:29.894 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 19:52:44.566 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 19:55:29.796 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:01:59.077 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:17:03.729 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:17:07.739 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:18:17.455 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:18:25.289 [D] [login.go:36]   
+2019/03/25 20:19:10.843 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:19:17.658 [D] [login.go:36]  number  
+2019/03/25 20:22:13.304 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:22:20.455 [D] [login.go:36]  number  
+2019/03/25 20:23:10.250 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:23:13.940 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:23:19.400 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:23:33.185 [D] [login.go:36]  number  
+2019/03/25 20:24:48.190 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:24:59.510 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:25:00.837 [D] [login.go:35]  number  
+2019/03/25 20:25:00.937 [D] [login.go:97]  Data: uANXVRxpHdqS+YUtznJ8fu+LioIhr8Co9fngDtuPaQrmihmPf3ff+302HNbWRnJcllBjjlrFOwtC/ZKYUpW22+Uvb68C5DXDaTgxjmoDuMY= 
+2019/03/25 20:26:18.585 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:26:47.096 [D] [login.go:35]  number  
+2019/03/25 20:26:47.286 [D] [login.go:97]  Data: uANXVRxpHdqS+YUtznJ8fu+LioIhr8Co9fngDtuPaQqCnN25Zcw9MiO/e+vz0Gb9NaEY6nBxxR6Ny2Q2ZOu1bBnMjq8CSJGXM52HxKSFp28= 
+2019/03/25 20:27:56.461 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:35:17.789 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:35:32.539 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:35:41.156 [D] [login.go:35]  number  
+2019/03/25 20:35:41.389 [D] [login.go:97]  Data: uANXVRxpHdqS+YUtznJ8fu+LioIhr8Co9fngDtuPaQpqGRUxy1RAIpyMOfDABY3CRMtxFmyRk+Inc90ZIfSqSoTox50lfS/q3vRc5GJqn8s= 
+2019/03/25 20:36:19.139 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:36:23.908 [D] [login.go:36]  number  
+2019/03/25 20:36:24.204 [D] [login.go:98]  Data: uANXVRxpHdqS+YUtznJ8fu+LioIhr8Co9fngDtuPaQrnbnaoicVO/RYkC1lFEQalHTK03V643OKj8pz7dKCIlSNGhKZ2/e7P5nuOkWeOj7s= 
+2019/03/25 20:36:39.893 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:36:46.573 [D] [login.go:35]  number  
+2019/03/25 20:36:46.763 [D] [login.go:97]  Data: &{  uANXVRxpHdqS+YUtznJ8fu+LioIhr8Co9fngDtuPaQrYeLTi1cKDWdUdeXI/nTU/97LeNEb5eO7K9+htRlH/bU20pmzF652ajzfDB1YT7/4=} 
+2019/03/25 20:38:09.044 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:38:11.844 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:38:16.228 [D] [login.go:35]  number  
+2019/03/25 20:38:16.250 [D] [login.go:80]  Create_body: {"result":100010,"reason":"","Data":"5tCRHKCHnl96ZLjOvopOYzX10lHFnER5KEhXNya0wmM="} 
+2019/03/25 20:38:16.343 [D] [login.go:98]  Access_Body {"result":0,"reason":"","Data":"uANXVRxpHdqS+YUtznJ8fu+LioIhr8Co9fngDtuPaQp+LVcJM9NnZlTG4o9qgDuqaOTPJ4aywE6Psia/yC/UWHrlJKYsDjICUoaS/u9aiEY="} 
+2019/03/25 20:39:44.346 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:40:40.005 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:48:12.410 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:48:36.161 [D] [auto_withdraw.go:37]  amount1: 100 
+2019/03/25 20:48:36.199 [D] [auto_withdraw.go:49]  mon: 100 
+2019/03/25 20:48:36.212 [D] [auto_withdraw.go:53]  u.Money: 200 
+2019/03/25 20:48:47.529 [D] [auto_withdraw.go:37]  amount1: 100 
+2019/03/25 20:48:47.539 [D] [auto_withdraw.go:49]  mon: 200 
+2019/03/25 20:48:47.550 [D] [auto_withdraw.go:53]  u.Money: 300 
+2019/03/25 20:48:48.777 [D] [auto_withdraw.go:37]  amount1: 100 
+2019/03/25 20:48:48.787 [D] [auto_withdraw.go:49]  mon: 300 
+2019/03/25 20:48:48.798 [D] [auto_withdraw.go:53]  u.Money: 400 
+2019/03/25 20:48:51.326 [D] [auto_withdraw.go:37]  amount1: 100 
+2019/03/25 20:48:51.336 [D] [auto_withdraw.go:49]  mon: 400 
+2019/03/25 20:48:51.347 [D] [auto_withdraw.go:53]  u.Money: 500 
+2019/03/25 20:49:55.470 [D] [auto_deposit.go:53]  数据库修改成功 1 
+2019/03/25 20:49:59.710 [D] [auto_deposit.go:53]  数据库修改成功 1 
+2019/03/25 20:50:02.508 [D] [auto_deposit.go:53]  数据库修改成功 1 
+2019/03/25 20:50:15.919 [D] [auto_deposit.go:53]  数据库修改成功 1 
+2019/03/25 20:57:57.267 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:58:05.819 [D] [auto_withdraw.go:39]  amount1: 0 
+2019/03/25 20:58:06.030 [D] [auto_withdraw.go:51]  mon: 600 
+2019/03/25 20:58:06.041 [D] [auto_withdraw.go:55]  u.Money: 600 
+2019/03/25 20:58:32.975 [D] [auto_withdraw.go:39]  amount1: 0 
+2019/03/25 20:58:32.986 [D] [auto_withdraw.go:51]  mon: 600 
+2019/03/25 20:58:32.996 [D] [auto_withdraw.go:55]  u.Money: 600 
+2019/03/25 20:58:39.741 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:58:43.146 [D] [auto_withdraw.go:39]  amount1: 0 
+2019/03/25 20:58:43.157 [D] [auto_withdraw.go:51]  mon: 600 
+2019/03/25 20:58:43.167 [D] [auto_withdraw.go:55]  u.Money: 600 
+2019/03/25 20:59:15.079 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:59:17.530 [D] [auto_withdraw.go:40]  amount1: 0 
+2019/03/25 20:59:17.541 [D] [auto_withdraw.go:52]  mon: 600 
+2019/03/25 20:59:17.552 [D] [auto_withdraw.go:56]  u.Money: 600 
+2019/03/25 20:59:33.065 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 20:59:34.593 [D] [auto_withdraw.go:40]  amount1: 0 
+2019/03/25 20:59:34.625 [D] [auto_withdraw.go:52]  mon: 600 
+2019/03/25 20:59:34.635 [D] [auto_withdraw.go:56]  u.Money: 600 
+2019/03/25 21:00:20.060 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:00:21.057 [D] [auto_withdraw.go:40]  amount1: 0 
+2019/03/25 21:00:21.068 [D] [auto_withdraw.go:52]  mon: 600 
+2019/03/25 21:00:21.079 [D] [auto_withdraw.go:56]  u.Money: 600 
+2019/03/25 21:00:35.623 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:00:36.506 [D] [auto_withdraw.go:40]  amount1: 0 
+2019/03/25 21:00:36.516 [D] [auto_withdraw.go:52]  mon: 600 
+2019/03/25 21:00:36.527 [D] [auto_withdraw.go:56]  u.Money: 600 
+2019/03/25 21:00:56.910 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:00:59.937 [D] [auto_withdraw.go:40]  amount1: 0 
+2019/03/25 21:00:59.947 [D] [auto_withdraw.go:52]  mon: 600 
+2019/03/25 21:00:59.958 [D] [auto_withdraw.go:56]  u.Money: 600 
+2019/03/25 21:01:20.267 [D] [auto_withdraw.go:40]  amount1: 100 
+2019/03/25 21:01:20.277 [D] [auto_withdraw.go:52]  mon: 600 
+2019/03/25 21:01:20.288 [D] [auto_withdraw.go:56]  u.Money: 700 
+2019/03/25 21:04:02.074 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:04:14.424 [D] [auto_withdraw.go:39]  amount1: 0 
+2019/03/25 21:04:14.505 [D] [auto_withdraw.go:51]  mon: 700 
+2019/03/25 21:04:14.515 [D] [auto_withdraw.go:55]  u.Money: 700 
+2019/03/25 21:04:29.840 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:04:30.891 [D] [auto_withdraw.go:39]  amount1: 0 
+2019/03/25 21:04:30.947 [D] [auto_withdraw.go:51]  mon: 700 
+2019/03/25 21:04:30.957 [D] [auto_withdraw.go:55]  u.Money: 700 
+2019/03/25 21:04:49.057 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:04:50.612 [D] [auto_withdraw.go:50]  mon: 700 
+2019/03/25 21:04:50.623 [D] [auto_withdraw.go:54]  u.Money: 700 
+2019/03/25 21:06:42.445 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:06:43.763 [D] [auto_withdraw.go:50]  mon: 700 
+2019/03/25 21:06:43.775 [D] [auto_withdraw.go:54]  u.Money: 700 
+2019/03/25 21:06:55.845 [D] [auto_withdraw.go:50]  mon: 700 
+2019/03/25 21:06:55.858 [D] [auto_withdraw.go:54]  u.Money: 700 
+2019/03/25 21:07:01.104 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:07:01.940 [D] [auto_withdraw.go:50]  mon: 700 
+2019/03/25 21:07:01.950 [D] [auto_withdraw.go:54]  u.Money: 700 
+2019/03/25 21:07:16.710 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:07:18.280 [D] [auto_withdraw.go:51]  mon: 700 
+2019/03/25 21:07:18.291 [D] [auto_withdraw.go:55]  u.Money: 700 
+2019/03/25 21:07:27.271 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:07:29.707 [D] [auto_withdraw.go:51]  mon: 700 
+2019/03/25 21:07:29.718 [D] [auto_withdraw.go:55]  u.Money: 700 

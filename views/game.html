@@ -7,10 +7,14 @@
 <body>
     <form action="/gamelist" method="post">
         <div>
-            账户余额 <input type="text" name="money" placeholder={{.money}} style="width: 80px;height: 15px"><button>充值</button>
+            账户余额 <input type="text" name="money" placeholder={{.money}} style="width:80px;height:15px"><button>充值</button>
         </div>
+    </form>
     <div>
-        登录用户 <button>{{.username}}</button>
+        用户名 <button>{{.username}}</button>
+    </div>
+    <div>
+        商户名 <button>{{.merchantsid}}</button>
     </div>
     <br>
     <div>
@@ -19,7 +23,6 @@
     {{range .gamename}}
     <a href="{{.Url}}">{{.GameName}}</a><br>
     {{end}}
-    </form>
 </body>
 </html>
 </html>

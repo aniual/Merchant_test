@@ -10,7 +10,6 @@ import (
 	"net/http"
 	"strings"
 	"io/ioutil"
-	"fmt"
 )
 
 
@@ -33,6 +32,7 @@ func (c *LoginController) Post(){
 	username := c.GetString("Username")
 	password := c.GetString("Password")
 	number := c.GetString("number")
+	beego.Trace("number",number)
 	//2.判断是否合法
 	if username=="" || password == ""{
 		c.Abort("输入错误")
@@ -57,10 +57,9 @@ func (c *LoginController) Post(){
 	//设置商户号cookie
 	c.Ctx.SetCookie("number",number)
 	res :=&CreatePlay{
-		MerchantId:"XBW001",
+		MerchantId:"YLTEST99",
 		CoUserName:username} //请求api中的Data的提取
 	Pubilc_("createplayer",res)
-
 	c.Redirect("/gamelist",302)
 }
 
@@ -69,7 +68,7 @@ func (c *LoginController) Post(){
 func Pubilc_(key  string, res *CreatePlay) string{
 	s :=&Server{}
 	key_body, _ := json.Marshal(res)
-	resp, err := http.Post("http://192.168.2.102:8443/" +key, "application/json", strings.NewReader(string(key_body)))
+	resp, err := http.Post("http://35.234.53.32:8443/" +key, "application/json", strings.NewReader(string(key_body)))
 	if err != nil {
 		panic(err)
 	}
@@ -78,6 +77,7 @@ func Pubilc_(key  string, res *CreatePlay) string{
 	if err := json.Unmarshal([]byte(body),&s);err != nil{
 		panic(err)
 	}
+	beego.Trace("Create_body:",string(body))
 	return s.Data
 }
 
@@ -85,7 +85,7 @@ func Pubilc_(key  string, res *CreatePlay) string{
 func Access(key  string, res *GetAccessToken) string{
 	s :=&Server{}
 	key_body, _ := json.Marshal(res)
-	resp, err := http.Post("http://192.168.2.102:8443/" +key, "application/json", strings.NewReader(string(key_body)))
+	resp, err := http.Post("http://35.234.53.32:8443/" +key, "application/json", strings.NewReader(string(key_body)))
 	if err != nil {
 		panic(err)
 	}
@@ -95,8 +95,7 @@ func Access(key  string, res *GetAccessToken) string{
 		panic(err)
 
 	}
-	//fmt.Println("s:",&s)
-	fmt.Println(string(body))
+	beego.Trace("Access_Body",string(body))
 	return s.Data
 }
 

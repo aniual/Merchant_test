@@ -1,0 +1,123 @@
+2019/03/25 21:08:32.236 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:08:34.482 [D] [auto_withdraw.go:52]  mon: 700 
+2019/03/25 21:08:34.492 [D] [auto_withdraw.go:56]  u.Money: 700 
+2019/03/25 21:08:40.322 [D] [auto_withdraw.go:52]  mon: 700 
+2019/03/25 21:08:40.333 [D] [auto_withdraw.go:56]  u.Money: 700 
+2019/03/25 21:08:54.650 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:08:56.341 [D] [auto_withdraw.go:52]  mon: 700 
+2019/03/25 21:08:56.352 [D] [auto_withdraw.go:56]  u.Money: 700 
+2019/03/25 21:10:13.205 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:10:18.329 [D] [auto_withdraw.go:51]  mon: 700 
+2019/03/25 21:10:18.340 [D] [auto_withdraw.go:55]  u.Money: 700 
+2019/03/25 21:10:34.668 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:10:35.317 [D] [auto_withdraw.go:51]  mon: 700 
+2019/03/25 21:10:35.331 [D] [auto_withdraw.go:55]  u.Money: 700 
+2019/03/25 21:10:46.959 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 21:10:48.875 [D] [auto_withdraw.go:51]  mon: 700 
+2019/03/25 21:10:48.886 [D] [auto_withdraw.go:55]  u.Money: 700 
+2019/03/25 21:11:18.997 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:06:33.237 [D] [auto_withdraw.go:46]  money: 0 
+2019/03/25 23:06:33.240 [D] [auto_withdraw.go:50]  mon: 0 
+2019/03/25 23:06:33.307 [D] [auto_withdraw.go:54]  u.Money: 0 
+2019/03/25 23:07:13.067 [D] [auto_withdraw.go:50]  mon: 0 
+2019/03/25 23:07:13.077 [D] [auto_withdraw.go:54]  u.Money: 0 
+2019/03/25 23:07:18.976 [D] [auto_withdraw.go:50]  mon: 0 
+2019/03/25 23:07:18.987 [D] [auto_withdraw.go:54]  u.Money: 0 
+2019/03/25 23:07:19.432 [D] [auto_withdraw.go:50]  mon: 0 
+2019/03/25 23:07:19.442 [D] [auto_withdraw.go:54]  u.Money: 0 
+2019/03/25 23:10:44.018 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:10:47.976 [C] [asm_amd64.s:522]  the request url is  /autowithdraw
+2019/03/25 23:10:47.976 [C] [asm_amd64.s:522]  Handler crashed with error json: cannot unmarshal string into Go struct field AutoWithdraw.Amount of type float64
+2019/03/25 23:10:47.976 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:522
+2019/03/25 23:10:47.976 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/panic.go:513
+2019/03/25 23:10:47.977 [C] [asm_amd64.s:522]  /Users/hz/go/src/Merchants_test/controllers/auto_withdraw.go:32
+2019/03/25 23:10:47.977 [C] [asm_amd64.s:522]  /Users/hz/go/src/github.com/astaxie/beego/router.go:836
+2019/03/25 23:10:47.977 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:2741
+2019/03/25 23:10:47.977 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:1847
+2019/03/25 23:10:47.977 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:1333
+2019/03/25 23:10:54.097 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:11:01.968 [C] [asm_amd64.s:522]  the request url is  /autowithdraw
+2019/03/25 23:11:01.969 [C] [asm_amd64.s:522]  Handler crashed with error json: cannot unmarshal string into Go struct field AutoWithdraw.Amount of type float64
+2019/03/25 23:11:01.969 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:522
+2019/03/25 23:11:01.969 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/panic.go:513
+2019/03/25 23:11:01.969 [C] [asm_amd64.s:522]  /Users/hz/go/src/Merchants_test/controllers/auto_withdraw.go:32
+2019/03/25 23:11:01.969 [C] [asm_amd64.s:522]  /Users/hz/go/src/github.com/astaxie/beego/router.go:836
+2019/03/25 23:11:01.969 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:2741
+2019/03/25 23:11:01.969 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:1847
+2019/03/25 23:11:01.969 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:1333
+2019/03/25 23:11:14.366 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:11:17.169 [C] [asm_amd64.s:522]  the request url is  /autowithdraw
+2019/03/25 23:11:17.169 [C] [asm_amd64.s:522]  Handler crashed with error json: cannot unmarshal string into Go struct field AutoWithdraw.Amount of type float64
+2019/03/25 23:11:17.169 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:522
+2019/03/25 23:11:17.169 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/panic.go:513
+2019/03/25 23:11:17.169 [C] [asm_amd64.s:522]  /Users/hz/go/src/Merchants_test/controllers/auto_withdraw.go:32
+2019/03/25 23:11:17.169 [C] [asm_amd64.s:522]  /Users/hz/go/src/github.com/astaxie/beego/router.go:836
+2019/03/25 23:11:17.169 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:2741
+2019/03/25 23:11:17.169 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:1847
+2019/03/25 23:11:17.169 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:1333
+2019/03/25 23:12:45.067 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:12:48.163 [C] [asm_amd64.s:522]  the request url is  /autowithdraw
+2019/03/25 23:12:48.163 [C] [asm_amd64.s:522]  Handler crashed with error json: cannot unmarshal string into Go struct field AutoWithdraw.Amount of type float64
+2019/03/25 23:12:48.163 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:522
+2019/03/25 23:12:48.163 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/panic.go:513
+2019/03/25 23:12:48.163 [C] [asm_amd64.s:522]  /Users/hz/go/src/Merchants_test/controllers/auto_withdraw.go:31
+2019/03/25 23:12:48.163 [C] [asm_amd64.s:522]  /Users/hz/go/src/github.com/astaxie/beego/router.go:836
+2019/03/25 23:12:48.163 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:2741
+2019/03/25 23:12:48.163 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:1847
+2019/03/25 23:12:48.163 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:1333
+2019/03/25 23:14:06.874 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:14:09.835 [C] [asm_amd64.s:522]  the request url is  /autowithdraw
+2019/03/25 23:14:09.835 [C] [asm_amd64.s:522]  Handler crashed with error json: cannot unmarshal string into Go struct field AutoWithdraw.Amount of type float64
+2019/03/25 23:14:09.835 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:522
+2019/03/25 23:14:09.835 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/panic.go:513
+2019/03/25 23:14:09.835 [C] [asm_amd64.s:522]  /Users/hz/go/src/Merchants_test/controllers/auto_withdraw.go:31
+2019/03/25 23:14:09.835 [C] [asm_amd64.s:522]  /Users/hz/go/src/github.com/astaxie/beego/router.go:836
+2019/03/25 23:14:09.835 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:2741
+2019/03/25 23:14:09.835 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:1847
+2019/03/25 23:14:09.835 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:1333
+2019/03/25 23:14:49.643 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:16:23.762 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:16:26.350 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:19:02.929 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:19:05.301 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:19:50.518 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/25 23:19:53.149 [D] [auto_withdraw.go:53]  mon: 500 
+2019/03/25 23:19:53.160 [D] [auto_withdraw.go:57]  u.Money: 600 
+2019/03/25 23:19:58.451 [D] [auto_withdraw.go:53]  mon: 600 
+2019/03/25 23:19:58.462 [D] [auto_withdraw.go:57]  u.Money: 700 
+2019/03/25 23:20:00.185 [D] [auto_withdraw.go:53]  mon: 700 
+2019/03/25 23:20:00.196 [D] [auto_withdraw.go:57]  u.Money: 800 
+2019/03/25 23:20:15.365 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/26 10:13:19.465 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/26 10:13:22.880 [C] [asm_amd64.s:522]  the request url is  /gamelist
+2019/03/26 10:13:22.880 [C] [asm_amd64.s:522]  Handler crashed with error interface conversion: interface {} is nil, not string
+2019/03/26 10:13:22.880 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:522
+2019/03/26 10:13:22.880 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/panic.go:513
+2019/03/26 10:13:22.881 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/iface.go:248
+2019/03/26 10:13:22.881 [C] [asm_amd64.s:522]  /Users/hz/go/src/Merchants_test/controllers/game_list.go:48
+2019/03/26 10:13:22.881 [C] [asm_amd64.s:522]  /Users/hz/go/src/github.com/astaxie/beego/router.go:834
+2019/03/26 10:13:22.881 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:2741
+2019/03/26 10:13:22.881 [C] [asm_amd64.s:522]  /usr/local/go/src/net/http/server.go:1847
+2019/03/26 10:13:22.881 [C] [asm_amd64.s:522]  /usr/local/go/src/runtime/asm_amd64.s:1333
+2019/03/26 10:13:58.130 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/26 10:15:51.846 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/26 10:26:26.008 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/26 10:26:32.538 [D] [auto_deposit.go:42]  money 0 
+2019/03/26 10:27:20.236 [D] [auto_deposit.go:53]  数据库修改成功 1 
+2019/03/26 10:28:29.607 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/26 10:28:31.838 [D] [auto_deposit.go:53]  扣款金额成功%d条 1 
+2019/03/26 10:28:50.198 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/26 10:28:52.003 [D] [auto_deposit.go:53]  扣款金额成功 1 
+2019/03/26 10:30:18.327 [D] [auto_withdraw.go:36]  Amount: 100 
+2019/03/26 10:30:18.358 [D] [auto_withdraw.go:49]  money: 0 
+2019/03/26 10:30:18.358 [D] [auto_withdraw.go:53]  mon: 0 
+2019/03/26 10:30:18.369 [D] [auto_withdraw.go:57]  u.Money: 100 
+2019/03/26 10:30:25.507 [D] [auto_withdraw.go:36]  Amount: 100 
+2019/03/26 10:30:25.518 [D] [auto_withdraw.go:49]  money: 0 
+2019/03/26 10:30:25.518 [D] [auto_withdraw.go:53]  mon: 0 
+2019/03/26 10:30:25.528 [D] [auto_withdraw.go:57]  u.Money: 100 
+2019/03/26 10:30:45.152 [D] [auto_withdraw.go:36]  Amount: 100 
+2019/03/26 10:30:45.162 [D] [auto_withdraw.go:49]  money: 0 
+2019/03/26 10:30:45.162 [D] [auto_withdraw.go:53]  mon: 0 
+2019/03/26 10:30:45.173 [D] [auto_withdraw.go:57]  u.Money: 100 
+2019/03/26 10:32:45.025 [I] [asm_amd64.s:1333]  http server Running on http://:8181

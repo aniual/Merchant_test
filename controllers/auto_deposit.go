@@ -37,9 +37,9 @@ func (c *AutoController) Post() {
 		var u models.User
 		err = o.Raw("SELECT money FROM user WHERE username = ?", num.CoUserName).QueryRow(&u)
 		//调用money的值进行赋值
-		err := o.Read(&u)
+		//err := o.Read(&u)
 		if err != nil{
-			fmt.Println("money",u.Money)
+			beego.Trace("money",u.Money)
 		}
 		//调用money的值进行赋值
 		mon := u.Money
@@ -49,9 +49,8 @@ func (c *AutoController) Post() {
 			if o.Read(&u) == nil{
 				u.Money = mon - num.ReqAmount
 				fmt.Println("ReqAmout",num.ReqAmount)
-				fmt.Println("u.Moeny:",u.Money)
 				if s,err := o.Update(&u,"money");err == nil{
-					fmt.Println("数据库修改成功",s)
+					beego.Trace("扣款金额成功",s)
 				}
 			}
 			auto := &AutoDepositDataunit{num.ReqAmount, "001", num.Serialnum}
@@ -64,10 +63,10 @@ func (c *AutoController) Post() {
 			u = models.User{Id:1}
 			if o.Read(&u) == nil{
 				u.Money = mon - num.MiniAmount
-					fmt.Println("ReqAmout",num.MiniAmount)
-				fmt.Println("u.Moeny:",u.Money)
+					beego.Trace("ReqAmout",num.MiniAmount)
+				beego.Trace("u.Moeny:",u.Money)
 				if s,err := o.Update(&u,"money");err == nil{
-					fmt.Println("数据库修改成功",s)
+					beego.Trace("扣款金额成功",s)
 				}
 			}
 			auto := &AutoDepositDataunit{num.MiniAmount, "001", num.Serialnum}

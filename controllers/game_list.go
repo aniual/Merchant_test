@@ -44,7 +44,7 @@ func (c *GameListController)  Get() {
 	user := c.GetSession("loginuser")
 	//接口传递过来数据类型需要断言 即user.(string)
 	res :=&GetAccessToken{
-		MerchantId:"XBW001",
+		MerchantId:"YLTEST99",
 		CoUserName:user.(string)} //请求api中的Data的提取
 	//调用Access函数，返回Data
 	Data := Access("getaccesstoken", res)
@@ -64,13 +64,17 @@ func (c *GameListController)  Get() {
 			panic(err)
 		}
 		gameid := strconv.Itoa(list.GameUserID)
-		name := url.QueryEscape(user.(string))
-		keysUrl := "CoUserName=" + name + "&&nickname=" + user.(string) + "&&AccessToken=" +list.AccessToken + "&&terminaltype=" + "MacOS"+ "&&GameUserID=" + gameid + "&&merchantid=" + "XBW001" + "&&model=" + "2" + "&&music=" + "true" + "&&SoundEffect=" + "true" + "&&BackUrl=" + encodeURIComponent("http://192.168.4.216:8181/gamelist/?")
+		//BackUrl := "192.168.2.102/gamelist"
+		//BackUrl := "192.168.4.216/gamelist/?"
+		//192.168.2.102服务环境地址
+		keysUrl := "CoUserName=" + "YLTEST99_"+user.(string) + "&&nickname=" + user.(string) + "&&AccessToken=" +list.AccessToken + "&&terminaltype=" + "MacOS"+ "&&GameUserID=" + gameid + "&&merchantid=" + "YLTEST99" + "&&model=" + "2" + "&&music=" + "true" + "&&SoundEffect=" + "true" + "&&BackUrl=" + encodeURIComponent("http://35.234.53.32:8181/gamelist/?")
+		//192.168.4.216本地测试地址
+		//keysUrl := "CoUserName=" + name + "&&nickname=" + user.(string) + "&&AccessToken=" +list.AccessToken + "&&terminaltype=" + "MacOS"+ "&&GameUserID=" + gameid + "&&merchantid=" + "YLTEST99" + "&&model=" + "2" + "&&music=" + "true" + "&&SoundEffect=" + "true" + "&&BackUrl=" + encodeURIComponent("http://192.168.4.216:8181/gamelist/?")
 		keysURL := encodeURIComponent(keysUrl)
 		kUrl := v.Url + "/?"+ keysURL
 		//fmt.Println(keysUrl)
 		//keysURL := encodeURIComponent(keysUrl)
-		//fmt.Println(keysURL)
+		//fmt.Println(keysURL)a
 		/*Url, err := url.Parse(v.Url)
 		if err != nil {
 			panic(err.Error())
@@ -105,7 +109,6 @@ func (c *GameListController)  Get() {
 		//total_url := url.QueryEscape(new_url)
 		//fmt.Println(total_url)
 		a := GameListDataUnit{v.GameName,kUrl}
-		//fmt.Println(keysUrl)
 		game_name = append(game_name, a)
 	}
 
@@ -117,6 +120,7 @@ func (c *GameListController)  Get() {
 	c.Data["money"] = mon
 	c.Data["username"] = user
 	c.Data["gamename"] = game_name
+	c.Data["merchantsid"] = "YLTEST99"
 	c.TplName = "game.html"
 
 }
@@ -152,11 +156,11 @@ func (c *GameListController) Post(){
 	c.Redirect("/gamelist",302)
 }
 
+
 //传递参数游戏的链接game_url
 func Get() []GameListDataUnit{
 	//初始化gamename数组
 	var gamename []GameListDataUnit
-	// 返回解码后的gamelist的data值
 	// 返回解码后的gamelist的data值
 	s, _ := Decrypt(GameList())
 	list := &GameListData{}

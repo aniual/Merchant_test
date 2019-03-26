@@ -1,0 +1,33 @@
+2019/03/26 10:32:47.601 [D] [auto_withdraw.go:36]  退出金额Amount: 100 
+2019/03/26 10:32:47.635 [D] [auto_withdraw.go:49]  money: 0 
+2019/03/26 10:32:47.635 [D] [auto_withdraw.go:53]  数据库金额mon: 0 
+2019/03/26 10:32:47.645 [D] [auto_withdraw.go:57]  u.Money: 100 
+2019/03/26 10:33:44.389 [D] [auto_withdraw.go:36]  退出金额Amount: 100 
+2019/03/26 10:33:44.400 [D] [auto_withdraw.go:49]  money: 0 
+2019/03/26 10:33:44.400 [D] [auto_withdraw.go:53]  数据库金额mon: 0 
+2019/03/26 10:33:44.410 [D] [auto_withdraw.go:57]  u.Money: 100 
+2019/03/26 10:33:46.080 [D] [auto_withdraw.go:36]  退出金额Amount: 100 
+2019/03/26 10:33:46.091 [D] [auto_withdraw.go:49]  money: 0 
+2019/03/26 10:33:46.091 [D] [auto_withdraw.go:53]  数据库金额mon: 0 
+2019/03/26 10:33:46.102 [D] [auto_withdraw.go:57]  u.Money: 100 
+2019/03/26 10:34:19.049 [D] [auto_withdraw.go:36]  退出金额Amount: 100 
+2019/03/26 10:34:19.060 [D] [auto_withdraw.go:53]  数据库金额mon: 100 
+2019/03/26 10:34:19.070 [D] [auto_withdraw.go:57]  u.Money: 200 
+2019/03/26 10:34:22.848 [D] [auto_withdraw.go:36]  退出金额Amount: 100 
+2019/03/26 10:34:22.859 [D] [auto_withdraw.go:53]  数据库金额mon: 200 
+2019/03/26 10:34:22.869 [D] [auto_withdraw.go:57]  u.Money: 300 
+2019/03/26 10:34:50.376 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/26 10:34:54.718 [D] [auto_withdraw.go:36]  退出金额Amount: 100 
+2019/03/26 10:34:54.745 [D] [auto_withdraw.go:53]  数据库金额mon: 300 
+2019/03/26 10:34:54.755 [D] [auto_withdraw.go:57]  数据库总金额u.Money: 400 
+2019/03/26 10:35:01.525 [D] [auto_withdraw.go:36]  退出金额Amount: 100 
+2019/03/26 10:35:01.536 [D] [auto_withdraw.go:53]  数据库金额mon: 400 
+2019/03/26 10:35:01.547 [D] [auto_withdraw.go:57]  数据库总金额u.Money: 500 
+2019/03/26 10:35:04.757 [D] [auto_withdraw.go:36]  退出金额Amount: 100 
+2019/03/26 10:35:04.768 [D] [auto_withdraw.go:53]  数据库金额mon: 500 
+2019/03/26 10:35:04.779 [D] [auto_withdraw.go:57]  数据库总金额u.Money: 600 
+2019/03/26 10:35:16.580 [D] [auto_withdraw.go:36]  退出金额Amount: 100 
+2019/03/26 10:35:16.590 [D] [auto_withdraw.go:53]  数据库金额mon: 600 
+2019/03/26 10:35:16.601 [D] [auto_withdraw.go:57]  数据库总金额u.Money: 700 
+2019/03/26 10:38:54.924 [I] [asm_amd64.s:1333]  http server Running on http://:8181
+2019/03/26 10:51:42.062 [I] [asm_amd64.s:1333]  http server Running on http://:8181
