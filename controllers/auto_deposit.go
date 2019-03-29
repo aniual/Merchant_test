@@ -8,7 +8,6 @@ import (
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	"fmt"
 )
 
 type Response struct {
@@ -35,7 +34,7 @@ func (c *AutoController) Post() {
 		//创建一个orm对象
 		o := orm.NewOrm()
 		var u models.User
-		err = o.Raw("SELECT money FROM user WHERE username = ?", num.CoUserName).QueryRow(&u)
+		err = o.Raw("SELECT id,money FROM user WHERE username = ?", num.CoUserName).QueryRow(&u)
 		//调用money的值进行赋值
 		//err := o.Read(&u)
 		if err != nil{
@@ -43,12 +42,14 @@ func (c *AutoController) Post() {
 		}
 		//调用money的值进行赋值
 		mon := u.Money
+		//fmt.Println("mon:",u.Money)
+		//fmt.Println("id:",u.Id)
 		//进行比较接口数据给与返回body
 		if num.ReqAmount <= mon {
-			u = models.User{Id:1}
+			u = models.User{Id:u.Id}
 			if o.Read(&u) == nil{
 				u.Money = mon - num.ReqAmount
-				fmt.Println("ReqAmout",num.ReqAmount)
+				//fmt.Println("ReqAmout",num.ReqAmount)
 				if s,err := o.Update(&u,"money");err == nil{
 					beego.Trace("扣款金额成功",s)
 				}
@@ -60,7 +61,7 @@ func (c *AutoController) Post() {
 			json_encode, _ := Encrypt(json_auto)
 			c.Data["json"] = map[string]interface{}{"result": 0, "reason": "", "Data": json_encode}
 		}else if num.ReqAmount >= mon && num.MiniAmount <= mon{
-			u = models.User{Id:1}
+			u = models.User{Id:u.Id}
 			if o.Read(&u) == nil{
 				u.Money = mon - num.MiniAmount
 					beego.Trace("ReqAmout",num.MiniAmount)

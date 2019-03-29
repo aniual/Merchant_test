@@ -64,10 +64,8 @@ func (c *GameListController)  Get() {
 			panic(err)
 		}
 		gameid := strconv.Itoa(list.GameUserID)
-		//BackUrl := "192.168.2.102/gamelist"
-		//BackUrl := "192.168.4.216/gamelist/?"
 		//192.168.2.102服务环境地址
-		keysUrl := "CoUserName=" + "YLTEST99_"+user.(string) + "&&nickname=" + user.(string) + "&&AccessToken=" +list.AccessToken + "&&terminaltype=" + "MacOS"+ "&&GameUserID=" + gameid + "&&merchantid=" + "YLTEST99" + "&&model=" + "2" + "&&music=" + "true" + "&&SoundEffect=" + "true" + "&&BackUrl=" + encodeURIComponent("http://35.234.53.32:8181/gamelist/?")
+		keysUrl := "CoUserName=" + "YLTEST99_"+user.(string) + "&&nickname=" + user.(string) + "&&AccessToken=" +list.AccessToken + "&&terminaltype=" + "MacOS"+ "&&GameUserID=" + gameid + "&&merchantid=" + "YLTEST99" + "&&model=" + "2" + "&&music=" + "true" + "&&SoundEffect=" + "true" + "&&BackUrl=" + encodeURIComponent("http://192.168.4.216:8181/gamelist/?")
 		//192.168.4.216本地测试地址
 		//keysUrl := "CoUserName=" + name + "&&nickname=" + user.(string) + "&&AccessToken=" +list.AccessToken + "&&terminaltype=" + "MacOS"+ "&&GameUserID=" + gameid + "&&merchantid=" + "YLTEST99" + "&&model=" + "2" + "&&music=" + "true" + "&&SoundEffect=" + "true" + "&&BackUrl=" + encodeURIComponent("http://192.168.4.216:8181/gamelist/?")
 		keysURL := encodeURIComponent(keysUrl)
@@ -126,16 +124,24 @@ func (c *GameListController)  Get() {
 }
 
 
+func (c *GameListController) post() {
+	c.DelSession("username")
+	c.Redirect("/",302)
+}
+
+
+//此函数为
 func (c *GameListController) Post(){
 	//取到充值数据
 	money,err := c.GetFloat("money")
-	fmt.Println("money:",money)
+	//fmt.Println("money:",money)
 	if err == nil{
-		if money <= 0 {
+		/*if money <= 0 {
 			beego.Info("输入正确金额")
 			c.Redirect("/gamelist",302)
 			return
-		}else{
+		}else{*/
+		//对用户输入金额对数据库进行更改
 			o := orm.NewOrm()
 			var u models.User
 			u = models.User{Id:1}
@@ -151,7 +157,7 @@ func (c *GameListController) Post(){
 					fmt.Println(num)
 				}
 			}
-		}
+		//}
 	}
 	c.Redirect("/gamelist",302)
 }

@@ -43,7 +43,7 @@ func (c *WithController) Post() {
 	if err == nil {
 		o := orm.NewOrm()
 		var u models.User
-		err = o.Raw("SELECT money FROM user WHERE username = ?", num.CoUserName).QueryRow(&u)
+		err = o.Raw("SELECT id,money FROM user WHERE username = ?", num.CoUserName).QueryRow(&u)
 		//err := o.Read(&u)
 		if err != nil{
 			//beego.Trace("money:",u.Money)
@@ -51,7 +51,7 @@ func (c *WithController) Post() {
 		//调用money的值进行赋值
 		mon := u.Money
 		beego.Trace("数据库金额mon:",mon)
-		u = models.User{Id:1}
+		u = models.User{Id:u.Id}
 		if o.Read(&u) == nil{
 			u.Money = mon + amount1
 			beego.Trace("数据库总金额u.Money:",u.Money)

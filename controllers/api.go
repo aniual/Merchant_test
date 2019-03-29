@@ -48,7 +48,7 @@ type GetAccessToken struct {
 func Pubilc(key  string, res *Body) string{
 	s :=&Server{}
 	key_body, _ := json.Marshal(res)
-	resp, err := http.Post("http://35.234.53.32:8443/" +key, "application/json", strings.NewReader(string(key_body)))
+	resp, err := http.Post("http://192.168.2.102:8443/" +key, "application/json", strings.NewReader(string(key_body)))
 	if err != nil {
 		panic(err)
 	}

@@ -29,6 +29,7 @@ func (c *LoginController) Post(){
 	//1.拿到数据
 	o := orm.NewOrm()
 	user := models.User{}
+	//获取用户输入的用户名密码
 	username := c.GetString("Username")
 	password := c.GetString("Password")
 	number := c.GetString("number")
@@ -56,19 +57,23 @@ func (c *LoginController) Post(){
 	c.SetSession("loginuser",username)
 	//设置商户号cookie
 	c.Ctx.SetCookie("number",number)
-	res :=&CreatePlay{
-		MerchantId:"YLTEST99",
-		CoUserName:username} //请求api中的Data的提取
-	Pubilc_("createplayer",res)
+	//如果用户已经存在跳过注册
+	//if user.Username != username{
+		res :=&CreatePlay{
+			MerchantId:"YLTEST99",
+			CoUserName:username} //请求api中的Data的提取
+		Pubilc_("createplayer",res)
+	//}
 	c.Redirect("/gamelist",302)
 }
 
 
 //用于请求的公共代码，直接调用此方法
+//参数key为api请求路径,
 func Pubilc_(key  string, res *CreatePlay) string{
 	s :=&Server{}
 	key_body, _ := json.Marshal(res)
-	resp, err := http.Post("http://35.234.53.32:8443/" +key, "application/json", strings.NewReader(string(key_body)))
+	resp, err := http.Post("http://192.168.2.102:8443/" +key, "application/json", strings.NewReader(string(key_body)))
 	if err != nil {
 		panic(err)
 	}
@@ -85,7 +90,7 @@ func Pubilc_(key  string, res *CreatePlay) string{
 func Access(key  string, res *GetAccessToken) string{
 	s :=&Server{}
 	key_body, _ := json.Marshal(res)
-	resp, err := http.Post("http://35.234.53.32:8443/" +key, "application/json", strings.NewReader(string(key_body)))
+	resp, err := http.Post("http://192.168.2.102:8443/" +key, "application/json", strings.NewReader(string(key_body)))
 	if err != nil {
 		panic(err)
 	}

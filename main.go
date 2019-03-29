@@ -15,15 +15,17 @@ func main() {
 		ExposeHeaders:[]string{"Content-Length"},
 		AllowAllOrigins:true,
 	}))
+	//添加日志
 	loggerConfig := `{
 		"filename":"logs/test.log",
-		"maxlines" : 1000,
-		"maxsize"  : 10240,
+		"maxlines" : 100000,
+		"maxsize"  : 102400,
 		"rotate": true,
 		"daily":true,
-		"maxdays":10
+		"maxdays":5
 	}`
 	beego.SetLogger("file",loggerConfig)
+	beego.BeeLogger.DelLogger("console")
 	beego.Run()
 }
 
