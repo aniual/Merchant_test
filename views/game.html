@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>游戏列表</title>
 </head>
 <body>
+    <h1><a href="{{.ip}}">直接进入大厅</a></h1>
     <form action="/gamelist" method="post">
         <div>
             账户余额 <input type="text" name="money" placeholder={{.money}} style="width:80px;height:15px"><button>充值</button>

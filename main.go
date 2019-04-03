@@ -25,7 +25,7 @@ func main() {
 		"maxdays":5
 	}`
 	beego.SetLogger("file",loggerConfig)
-	beego.BeeLogger.DelLogger("console")
+	//beego.BeeLogger.DelLogger("console")
 	beego.Run()
 }
 
